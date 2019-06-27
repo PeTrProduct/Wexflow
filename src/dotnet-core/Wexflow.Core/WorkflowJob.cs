@@ -1,6 +1,5 @@
 ﻿using Quartz;
 
-
 namespace Wexflow.Core
 {
     /// <summary>
@@ -16,11 +15,12 @@ namespace Wexflow.Core
         System.Threading.Tasks.Task IJob.Execute(IJobExecutionContext context)
         {
             Workflow workflow = (Workflow)context.JobDetail.JobDataMap.Get("workflow");
-            workflow.Start();
+            //workflow.Start();
             System.Threading.Tasks.Task task = new System.Threading.Tasks.Task(() =>
             {
-                //workflow.Start();
+                workflow.Start();
             });
+            task.Start();
             return task;
         }
     }
