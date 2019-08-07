@@ -19,6 +19,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,11 +95,14 @@
   <ItemGroup>
     <Compile Include="CsvToYaml.cs" />
     <Compile Include="CsvToXml.cs" />
+    <Compile Include="InstagramUploadVideo.cs" />
+    <Compile Include="MessageCorrect.cs" />
     <Compile Include="HttpGet.cs" />
     <Compile Include="HtmlToText.cs" />
     <Compile Include="JsonToYaml.cs" />
     <Compile Include="CsvToJson.cs" />
     <Compile Include="EnvironmentVariable.cs" />
+    <Compile Include="InstagramUploadImage.cs" />
     <Compile Include="YamlToJson.cs" />
     <Compile Include="ScssToCss.cs" />
     <Compile Include="UglifyHtml.cs" />
@@ -358,6 +362,14 @@
       <Project>{d2ba9820-d5c7-4053-8e36-ac94c162c9b0}</Project>
       <Name>Wexflow.Tasks.ImagesTransformer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\dotnet\Wexflow.Tasks.InstagramUploadImage\Wexflow.Tasks.InstagramUploadImage.csproj">
+      <Project>{45d2177b-efb1-4790-8f08-e373840413d7}</Project>
+      <Name>Wexflow.Tasks.InstagramUploadImage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\dotnet\Wexflow.Tasks.InstagramUploadVideo\Wexflow.Tasks.InstagramUploadVideo.csproj">
+      <Project>{882fcc8b-b7f6-4290-9c2d-ccdfbbc2e327}</Project>
+      <Name>Wexflow.Tasks.InstagramUploadVideo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\dotnet\Wexflow.Tasks.IsoCreator\Wexflow.Tasks.IsoCreator.csproj">
       <Project>{9cdfaf59-62b3-48ba-bcce-3359856d3835}</Project>
       <Name>Wexflow.Tasks.IsoCreator</Name>
@@ -393,6 +405,10 @@
     <ProjectReference Include="..\..\src\dotnet\Wexflow.Tasks.MediaInfo\Wexflow.Tasks.MediaInfo.csproj">
       <Project>{31f725ce-5047-4afd-a21e-58828f7ccb08}</Project>
       <Name>Wexflow.Tasks.MediaInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\dotnet\Wexflow.Tasks.MessageCorrect\Wexflow.Tasks.MessageCorrect.csproj">
+      <Project>{84156eee-3f8f-432d-8846-ab01481c922a}</Project>
+      <Name>Wexflow.Tasks.MessageCorrect</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\dotnet\Wexflow.Tasks.Mkdir\Wexflow.Tasks.Mkdir.csproj">
       <Project>{ff5a22b8-b594-4d2b-a3fe-10bd28038005}</Project>

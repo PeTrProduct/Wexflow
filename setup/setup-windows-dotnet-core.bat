@@ -1,6 +1,6 @@
 ::@echo off
 
-set version=3.8
+set version=4.2
 set dst=wexflow-%version%-windows-dotnet-core
 set dstDir=.\%dst%
 set backend=Backend
@@ -8,6 +8,7 @@ set backend=Backend
 if exist %dstDir% rmdir /s /q %dstDir%
 mkdir %dstDir%
 mkdir %dstDir%\Wexflow-dotnet-core\
+mkdir %dstDir%\Wexflow-dotnet-core\Database\
 mkdir %dstDir%\WexflowTesting\
 mkdir %dstDir%\%backend%\
 mkdir %dstDir%\%backend%\images\
@@ -17,9 +18,10 @@ mkdir %dstDir%\%backend%\js\
 
 :: WexflowTesting
 xcopy ..\samples\WexflowTesting\* %dstDir%\WexflowTesting\ /s /e
+xcopy ..\samples\dotnet-core\windows\WexflowTesting\* %dstDir%\WexflowTesting\ /s /e
 
 :: Wexflow-dotnet-core
-xcopy ..\samples\dotnet-core\windows\* %dstDir%\Wexflow-dotnet-core\ /s /e
+xcopy ..\samples\dotnet-core\windows\Wexflow\* %dstDir%\Wexflow-dotnet-core\ /s /e
 copy ..\src\dotnet-core\Wexflow.Core\GlobalVariables.xml %dstDir%\Wexflow-dotnet-core\
 copy ..\src\dotnet-core\Wexflow.Core\Wexflow.xml %dstDir%\Wexflow-dotnet-core\
 copy ..\src\dotnet-core\Wexflow.Core\Workflow.xsd %dstDir%\Wexflow-dotnet-core\
@@ -49,12 +51,16 @@ copy "..\src\backend\Wexflow.Backend\js\login.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\forgot-password.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\dashboard.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\manager.min.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\ace.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\worker-xml.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\mode-xml.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\theme-github.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\designer.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\history.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\users.min.js" %dstDir%\%backend%\js
 
 :: Wexflow server
-dotnet publish  ..\src\dotnet-core\Wexflow.Server\Wexflow.Server.csproj --force --output %~dp0\%dstDir%\Wexflow.Server
+dotnet publish ..\src\dotnet-core\Wexflow.Server\Wexflow.Server.csproj --force --output %~dp0\%dstDir%\Wexflow.Server
 copy dotnet-core\windows\install.bat %dstDir%
 copy dotnet-core\windows\run.bat %dstDir%
 

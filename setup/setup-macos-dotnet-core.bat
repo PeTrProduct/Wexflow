@@ -1,6 +1,6 @@
 ::@echo off
 
-set version=3.8
+set version=4.2
 set dst=wexflow
 set zip=wexflow-%version%-macos-dotnet-core.zip
 set dstDir=.\%dst%
@@ -10,6 +10,7 @@ if exist %zip% del %zip%
 if exist %dstDir% rmdir /s /q %dstDir%
 mkdir %dstDir%
 mkdir %dstDir%\Wexflow\
+mkdir %dstDir%\Wexflow\Database\
 mkdir %dstDir%\WexflowTesting\
 mkdir %dstDir%\%backend%\
 mkdir %dstDir%\%backend%\images\
@@ -19,9 +20,10 @@ mkdir %dstDir%\%backend%\js\
 
 :: WexflowTesting
 xcopy ..\samples\WexflowTesting\* %dstDir%\WexflowTesting\ /s /e
+xcopy ..\samples\dotnet-core\macos\WexflowTesting\* %dstDir%\WexflowTesting\ /s /e
 
 :: Wexflow
-xcopy ..\samples\dotnet-core\macos\* %dstDir%\Wexflow\ /s /e
+xcopy ..\samples\dotnet-core\macos\Wexflow\* %dstDir%\Wexflow\ /s /e
 copy ..\src\dotnet-core\Wexflow.Core\Workflow.xsd %dstDir%\Wexflow\
 
 :: Wexflow backend
@@ -47,6 +49,10 @@ copy "..\src\backend\Wexflow.Backend\css\users.min.css" %dstDir%\%backend%\css
 copy "..\src\backend\Wexflow.Backend\js\settings.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\login.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\forgot-password.min.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\ace.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\worker-xml.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\mode-xml.js" %dstDir%\%backend%\js
+copy "..\src\backend\Wexflow.Backend\js\theme-github.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\dashboard.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\manager.min.js" %dstDir%\%backend%\js
 
@@ -61,7 +67,7 @@ copy "..\src\backend\Wexflow.Backend\js\history.min.js" %dstDir%\%backend%\js
 copy "..\src\backend\Wexflow.Backend\js\users.min.js" %dstDir%\%backend%\js
 
 :: Wexflow server
-dotnet publish  ..\src\dotnet-core\Wexflow.Server\Wexflow.Server.csproj --force --output %~dp0\%dstDir%\Wexflow.Server
+dotnet publish ..\src\dotnet-core\Wexflow.Server\Wexflow.Server.csproj --force --output %~dp0\%dstDir%\Wexflow.Server
 copy dotnet-core\macos\appsettings.json %dstDir%\Wexflow.Server
 
 :: License

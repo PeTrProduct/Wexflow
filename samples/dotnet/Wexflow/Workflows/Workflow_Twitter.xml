@@ -5,14 +5,14 @@
 	</Settings>
 	<Tasks>
 		<Task id="1" name="FilesLoader" description="Loading tweets" enabled="true">
-			<Setting name="folder" value="C:\WexflowTesting\Tweets\" />
+			<Setting name="file" value="C:\WexflowTesting\Tweets\Tweets.xml" />
 		</Task>
 		<Task id="2" name="Twitter" description="Sending tweets" enabled="true">
 			<Setting name="selectFiles" value="1" />
-			<Setting name="consumerKey" value="$string" />
-			<Setting name="consumerSecret" value="$string" />
-			<Setting name="accessToken" value="$string" />
-			<Setting name="accessTokenSecret" value="$string" />
+			<Setting name="consumerKey" value="CUSTOMER_KEY" />
+			<Setting name="consumerSecret" value="CUSTOMER_SECRET" />
+			<Setting name="accessToken" value="ACCESS_TOKEN" />
+			<Setting name="accessTokenSecret" value="ACCESS_TOKEN_SECRET" />
 		</Task>
 	</Tasks>
 </Workflow>
